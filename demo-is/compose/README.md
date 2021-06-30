@@ -35,3 +35,21 @@ This compose file aims to be a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) 
     ```shell
     docker-compose down
     ```
+
+1. Check the update level
+
+    ```shell
+    docker image inspect --format '{{ index .Config.Labels "update_level"}}' \
+    docker.wso2.com/wso2is:5.11.0.0
+    ```
+
+1. Running sample apps outside of compose
+    ```shell
+    docker run -d \
+    --name sample-apps \
+    -v $(pwd)/sample-apps:/usr/local/tomcat/webapps \
+    -v $(pwd)/sample-apps-logs:/usr/local/tomcat/logs\
+    -p 8080:8080 \
+    tomcat
+    ```
+
