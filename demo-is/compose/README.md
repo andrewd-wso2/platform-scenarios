@@ -53,3 +53,4 @@ This compose file aims to be a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) 
     tomcat
     ```
 
+https://github.com/wso2-incubator/identity-local-auth-magiclink
