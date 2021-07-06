@@ -12,5 +12,22 @@ Follow the [Instructions](./compose/README.md) in the `/helm` folder
 
 ## Demo Walkthrough
 
-A simple [Demo](./compose/README.md) is described here
+- docker UP
+- consent APIs 
+- Create an Approver user
+- Create workflow definition
+- Create Workflow engagement
+- User self-registration enable
+- Self Register new user
+- Approver approves new user
+- Create SPA app https://localhost:5000/
+- simple consent claim
+- User login with consent
+- add mandatory claims
+- User login with added consent
+- login and collect info
+- download existing info
+- revoke consent
 
+https://is.docs.wso2.com/en/latest/learn/consent-management/
+https://is.docs.wso2.com/en/latest/learn/self-registration/

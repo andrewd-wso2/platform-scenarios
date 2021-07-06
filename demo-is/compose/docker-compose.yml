@@ -32,7 +32,6 @@ services:
     volumes:
       - ../config-volumes/mysql/initdb:/docker-entrypoint-initdb.d
       - ../config-volumes/mysql/my.cnf:/etc/mysql/my.cnf
-      - mysql-datavolume:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-uroot", "-proot"]
       interval: 30s
@@ -76,5 +75,3 @@ volumes:
   # Downloaded jars
   dropins-jars:
   plugins-jars:
-  # Persistant mysql data
-  mysql-datavolume:
