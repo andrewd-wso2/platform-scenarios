@@ -18,5 +18,9 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
         working-directory: ./demo-is/compose
+      - name: Sleep for 100 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '100s'
       - name: Test mailserver
-        run: docker run --network compose_default appropriate/curl -s --retry 100 --retry-connrefused http://mailserver:8025/
+        run: docker run --network compose_default appropriate/curl -kv --retry 10 --retry-connrefused http://identity-server:9443/api/health-check/v1.0/health
