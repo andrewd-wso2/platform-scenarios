@@ -47,30 +47,30 @@ services:
       - "1025:1025"
 
   # Identity Server
-  identity-server:
-    image: docker.wso2.com/wso2is:5.11.0.0 #5.11.0.0 is the latest 5.11 version alias
-    ports:
-      - "9763:9763"
-      - "9443:9443"
-    entrypoint:
-      - "sh"
-      - "-c"
-      - |
-          wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.1.0/wait-for | 
-          sh -s -- wso2is-mysql-db-service:3306 --timeout=80 -- $${WORKING_DIRECTORY}/docker-entrypoint.sh;
-    healthcheck:
-      test: ["CMD", "curl", "-k", "-v", "https://localhost:9443/api/health-check/v1.0/health"]
-      interval: 5s
-      timeout: 120s
-      start_period: 100s
-    volumes:
-      - ../config-volumes/identity-server:/home/wso2carbon/wso2-config-volume/repository/conf/
-      - dropins-jars:/home/wso2carbon/wso2-artifact-volume/repository/components/dropins/
-      - plugins-jars:/home/wso2carbon/wso2-artifact-volume/repository/components/plugins/
-    depends_on:
-      - boostrap
-      - wso2is-mysql-db-service
-      - mailserver
+  # identity-server:
+  #   image: docker.wso2.com/wso2is:5.11.0.0 #5.11.0.0 is the latest 5.11 version alias
+  #   ports:
+  #     - "9763:9763"
+  #     - "9443:9443"
+  #   entrypoint:
+  #     - "sh"
+  #     - "-c"
+  #     - |
+  #         wget -qO- https://raw.githubusercontent.com/eficode/wait-for/v2.1.0/wait-for | 
+  #         sh -s -- wso2is-mysql-db-service:3306 --timeout=80 -- $${WORKING_DIRECTORY}/docker-entrypoint.sh;
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-k", "-v", "https://localhost:9443/api/health-check/v1.0/health"]
+  #     interval: 5s
+  #     timeout: 120s
+  #     start_period: 100s
+  #   volumes:
+  #     - ../config-volumes/identity-server:/home/wso2carbon/wso2-config-volume/repository/conf/
+  #     - dropins-jars:/home/wso2carbon/wso2-artifact-volume/repository/components/dropins/
+  #     - plugins-jars:/home/wso2carbon/wso2-artifact-volume/repository/components/plugins/
+  #   depends_on:
+  #     - boostrap
+  #     - wso2is-mysql-db-service
+  #     - mailserver
 
 volumes:
   # Downloaded jars

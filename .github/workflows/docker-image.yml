@@ -16,9 +16,9 @@ jobs:
           password: ${{ secrets.WSO2_SUB_PASS }}
       - uses: actions/checkout@v2
         with:
-          path: 'demo-is/compose'
+          path: 'demo-is'
       - name: Build the stack
-        run: ls -la temp
-      - name: Build the stack
-        run: pwd
+        run: docker-compose up -d
+      - name: Test mailserver
+        run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8025/
         working-directory: 'demo-is/compose'
