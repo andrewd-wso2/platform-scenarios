@@ -18,7 +18,5 @@ jobs:
         with:
           path: 'demo-is'
       - name: Build the stack
-        run: docker-compose up -d
+        run: pwd
         working-directory: 'demo-is/compose'
-      - name: Test mailserver
-        run: docker run --network compose_default appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8025/
