@@ -15,8 +15,8 @@ jobs:
           username: ${{ secrets.WSO2_SUB_USER }}
           password: ${{ secrets.WSO2_SUB_PASS }}
       - uses: actions/checkout@v2
-        with:
-          path: 'demo-is'
+      - name: Build the stack
+        run: ls -la demo-is
       - name: Build the stack
         run: pwd
-        working-directory: 'demo-is/compose'
+        working-directory: ./demo-is/compose
