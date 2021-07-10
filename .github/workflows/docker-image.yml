@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  login:
+  check-version:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Private Registry
@@ -21,3 +21,20 @@ jobs:
       - name: Log level
         run: docker image inspect --format '{{ index .Config.Labels "update_level"}}' docker.wso2.com/wso2is:5.11.0.0
   
+
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Private Registry
+        uses: docker/login-action@v1
+        with:
+          registry: docker.wso2.com
+          username: ${{ secrets.WSO2_SUB_USER }}
+          password: ${{ secrets.WSO2_SUB_PASS }}
+      - uses: actions/checkout@v2
+        with:
+          path: 'demo-is/compose'
+      - name: Build the stack
+        run: docker-compose pull
+      - name: Test
+        run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
