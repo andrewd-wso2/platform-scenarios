@@ -22,5 +22,5 @@ jobs:
         uses: jakejarvis/wait-action@master
         with:
           time: '30s'
-      - name: Test mailserver
+      - name: Test Idenity server started
         run: docker run --network compose_default appropriate/curl -kv --retry 10 --retry-connrefused https://identity-server:9443/api/health-check/v1.0/health
