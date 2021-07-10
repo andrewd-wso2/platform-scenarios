@@ -1,3 +1,0 @@
-UPDATE AM_API
-SET API_PROVIDER = `pseudonym`
-WHERE API_PROVIDER = `username`

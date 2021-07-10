@@ -1,3 +1,0 @@
-UPDATE AM_APPLICATION
-SET UPDATED_BY = `pseudonym`
-WHERE UPDATED_BY = `username`

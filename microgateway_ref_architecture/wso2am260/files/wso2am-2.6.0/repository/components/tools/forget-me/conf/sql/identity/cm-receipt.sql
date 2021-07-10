@@ -1,4 +1,0 @@
-UPDATE CM_RECEIPT
-SET PII_PRINCIPAL_ID = `pseudonym`
-WHERE PII_PRINCIPAL_ID = `username`
-      AND PRINCIPAL_TENANT_ID = `tenant_id`

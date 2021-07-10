@@ -34,3 +34,17 @@ dependency-reduced-pom.xml
 *.prefs
 *.jar
 **/docker/images/*
+apim-analytics
+apim-bps-approval-workflow
+apim-is-as-keymanager-sso
+apim-is-sso
+apim-microservices-kubernetes
+bps-bpmn-complex-workflow
+ei-distributed-transactions
+ei-mb-analytics
+ei-quick-start-guide
+financial-solutions
+micro-integrator-sample
+si-demos
+solution-demos
+microgateway_ref_architecture

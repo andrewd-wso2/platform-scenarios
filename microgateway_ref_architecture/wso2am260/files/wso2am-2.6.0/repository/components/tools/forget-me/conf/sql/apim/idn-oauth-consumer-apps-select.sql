@@ -1,2 +1,0 @@
-SELECT APP_NAME FROM IDN_OAUTH_CONSUMER_APPS 
-WHERE USERNAME = `username` AND TENANT_ID = `tenant_id` AND USER_DOMAIN = `user_store_domain`

@@ -1,3 +1,0 @@
-UPDATE AM_APPLICATION
-SET CREATED_BY = `pseudonym`
-WHERE CREATED_BY = `username`
