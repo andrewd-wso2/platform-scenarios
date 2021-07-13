@@ -1,0 +1,63 @@
+version: '3.3'
+
+services:
+
+  logspout:
+    image: gliderlabs/logspout
+    command: 'syslog://logstash:5000'
+    restart: unless-stopped
+    links:
+      - logstash
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock'
+    depends_on:
+      - elasticsearch
+      - logstash
+      - kibana
+
+  logstash:
+    image: logstash:7.13.3
+    restart: unless-stopped
+    environment:
+      - LOGSPOUT=ignore
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+      - kibana
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+
+  kibana:
+    image: kibana:7.13.3
+    restart: unless-stopped
+    links:
+      - elasticsearch
+    environment:
+      - LOGSPOUT=ignore
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    image: elasticsearch:7.13.3
+    restart: unless-stopped
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data:rw
+    environment:
+      - LOGSPOUT=ignore
+      - node.name=elasticsearch
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - cluster.initial_master_nodes=elasticsearch
+
+volumes:
+  esdata1:
+    driver: local
+
+networks:
+  elk:

@@ -1,4 +1,4 @@
-# Demo-is Stack with Docker-compose
+# Demo-is Stack with docker-compose
 
 This compose file aims to be a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) description of the demo stack. It will pull in docker images with as little configuration as necessary. It is designed to mimic the [k8s-is](https://github.com/wso2/kubernetes-is) helm chart as much as possible to make the maintenence of this demo easier.
 
@@ -25,7 +25,7 @@ This compose file aims to be a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) 
     ```
     alt:
     ```shell
-    docker-compose -p logs -f compose-logs.yml up -d
+    docker-compose -p logs -f ./logs/compose-logs.yml up -d
     ```
     - view logs ui [http://localhost:7650/ui/](http://localhost:7650/ui/)
     - view stats [http://localhost:8001/containers/docker/](http://localhost:8001/containers/docker/)

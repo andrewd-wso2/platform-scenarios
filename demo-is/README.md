@@ -14,3 +14,8 @@ Follow the [Instructions](./compose/README.md) in the `/helm` folder
 
 A simple [Demo](./compose/README.md) is described here
 
+https://cloud.google.com/architecture/best-practices-for-operating-containers
+https://github.com/wso2/docker-is
+https://gitlab.com/-/snippets/1968617
+https://github.com/akarzim/zsh-docker-aliases
+https://git-fork.com/
